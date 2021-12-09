@@ -24,3 +24,16 @@ def interpret_type(s):
         return str 
     else:
         return None
+
+
+def auto_cast(items, allowed_types):
+    for i in range(len(items)):
+        item_type = interpret_type(items[i])
+        if item_type not in allowed_types:
+            if items[i] and str in allowed_types:
+                items[i] = str(items[i])
+            else:
+                return []
+        else:
+            items[i] = item_type(items[i])
+    return items

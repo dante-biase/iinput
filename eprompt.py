@@ -26,6 +26,8 @@ def get_value(prompt, allowed_types=[str], default=None):
         inp_type = __utils.interpret_type(inp)
         if inp_type in allowed_types:
             return inp_type(inp)
+        elif inp and str in allowed_types:
+            return inp
 
 
 def get_values(prompt, delimeter=',', allowed_types=[str], default=None):
