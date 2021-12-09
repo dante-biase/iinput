@@ -155,7 +155,7 @@ def get_lines(prompt):
             return lines
 
 
-def get_selection(menu_options, header="menu", prompt="selection", default=None):
+def get_selection(menu_options, header="menu", prompt="enter selection", default=None):
     if header:
         print(header)
     for key, value in menu_options.items():
