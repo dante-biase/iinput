@@ -158,7 +158,7 @@ def get_alpha(prompt, default=None, allow_empty=False):
     return inp
 
 
-def get_alpha_numeric(prompt, default=None, allow_empty=False):
+def get_alphanumeric(prompt, default=None, allow_empty=False):
     if default is None and allow_empty:
         default = ''
 
