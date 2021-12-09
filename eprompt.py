@@ -58,7 +58,18 @@ def match_value(prompt, target, max_attempts=-1):
     while inp != target and attempts != max_attempts:
         inp = str(input(f"{prompt}: "))
         attempts += 1
-    return inp == target
+    return attempts != max_attempts
+
+
+def match_values(prompt, targets, max_attempts=-1, delimeter=','):
+    targets = [str(v) for v in targets]
+    attempts = 0
+    inps = []
+    while sorted(inps) != sorted(targets) and attempts != max_attempts:
+        inps = str(input(f"{prompt}: ")).split(delimeter)
+        inps = [v.strip() for v in inps if v]
+        attempts += 1
+    return attempts != max_attempts
 
 
 def get_bool(prompt, default=None, allow_empty=False):
@@ -249,7 +260,7 @@ def match_pwd(prompt, target, max_attempts=-1):
     while pwd != target and attempts != max_attempts:
         pwd = getpass.getpass(prompt=f"{prompt}: ")
         attempts += 1
-    return pwd == target
+    return attempts != max_attempts
 
 
 def get_regex(prompt, r, flags, default=None, allow_empty=False):
