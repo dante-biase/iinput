@@ -17,7 +17,7 @@ def get_yn(prompt, default=None, allow_empty=False):
             inp = default
             break
 
-    return True if inp == 'y' else False
+    return inp
 
 
 def get_value(prompt, allowed_types=[str], default=None, allow_empty=False):
