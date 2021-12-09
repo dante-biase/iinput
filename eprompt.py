@@ -6,7 +6,10 @@ import getpass
 import utils as __utils
 
 
-def get_yn(prompt, default=None):
+def get_yn(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = None
     while inp not in ['y', 'n']:
         inp = str(input(f"{prompt} [y/n]: ")).strip().lower()
@@ -17,7 +20,10 @@ def get_yn(prompt, default=None):
     return True if inp == 'y' else False
 
 
-def get_value(prompt, allowed_types=[str], default=None):
+def get_value(prompt, allowed_types=[str], default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     while True:
         inp = str(input(f"{prompt}: ")).strip()
         if not inp and default is not None:
@@ -30,7 +36,10 @@ def get_value(prompt, allowed_types=[str], default=None):
             return inp
 
 
-def get_values(prompt, delimeter=',', allowed_types=[str], default=None):
+def get_values(prompt, delimeter=',', allowed_types=[str], default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = items = None
     while not (inp and items):
         inp = str(input(f"{prompt}: ")).strip()
@@ -52,7 +61,10 @@ def match_value(prompt, target, max_attempts=-1):
     return inp == target
 
 
-def get_bool(prompt, default=None):
+def get_bool(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     while True:
         inp = str(input(f"{prompt}: ")).strip()
         if not inp and default is not None:
@@ -64,7 +76,10 @@ def get_bool(prompt, default=None):
             pass
 
 
-def get_number(prompt, default=None):
+def get_number(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     while True:
         inp = str(input(f"{prompt}: ")).strip()
         if not inp and default is not None:
@@ -77,7 +92,10 @@ def get_number(prompt, default=None):
             pass
 
 
-def get_int(prompt, default=None):
+def get_int(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     while True:
         inp = str(input(f"{prompt}: ")).strip()
         if not inp and default is not None:
@@ -89,7 +107,10 @@ def get_int(prompt, default=None):
             pass
 
 
-def get_float(prompt, default=None):
+def get_float(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     while True:
         inp = str(input(f"{prompt}: ")).strip()
         if not inp and default is not None:
@@ -101,7 +122,10 @@ def get_float(prompt, default=None):
             pass
 
 
-def get_char(prompt, default=None):
+def get_char(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = ''
     while not __utils.ischar(inp):
         inp = str(input(f"{prompt}: "))
@@ -110,7 +134,10 @@ def get_char(prompt, default=None):
     return inp
 
 
-def get_str(prompt, default=None):
+def get_str(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = ''
     while not inp:
         inp = str(input(f"{prompt}: "))
@@ -119,7 +146,10 @@ def get_str(prompt, default=None):
     return inp
 
 
-def get_alpha(prompt, default=None):
+def get_alpha(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = ''
     while not inp.isalpha():
         inp = str(input(f"{prompt}: ")).strip()
@@ -128,7 +158,10 @@ def get_alpha(prompt, default=None):
     return inp
 
 
-def get_alpha_numeric(prompt, default=None):
+def get_alpha_numeric(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = ''
     while not inp.isalnum():
         inp = str(input(f"{prompt}: ")).strip()
@@ -137,7 +170,10 @@ def get_alpha_numeric(prompt, default=None):
     return inp
 
 
-def get_line(prompt, default=None):
+def get_line(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     inp = None
     while not inp:
         inp = str(input(f"{prompt}: ")).strip()
@@ -146,7 +182,7 @@ def get_line(prompt, default=None):
     return inp
 
 
-def get_lines(prompt):
+def get_lines(prompt, allow_empty=True):
     print(f"{prompt}: ")
     lines = []
     while True:
@@ -155,10 +191,15 @@ def get_lines(prompt):
             l = str(l).strip()
             lines.append(l)
         except EOFError:
+            if not allow_empty:
+                lines = list(filter(None, lines))
             return lines
 
 
-def get_selection(menu_options, header="menu", prompt="enter selection", default=None):
+def get_selection(menu_options, header="menu", prompt="enter selection", default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     if header:
         print(header)
     for key, value in menu_options.items():
@@ -176,7 +217,10 @@ def get_selection(menu_options, header="menu", prompt="enter selection", default
     return key, menu_options[key]
 
 
-def get_email(prompt, default=None):
+def get_email(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     email = None
     while not email:
         inp = str(input(f"{prompt}: ")).strip()
@@ -186,7 +230,10 @@ def get_email(prompt, default=None):
     return email.group()
 
 
-def get_pwd(prompt, default=None):
+def get_pwd(prompt, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     pwd = None
     while not pwd:
         pwd = getpass.getpass(prompt=f"{prompt}: ")
@@ -196,6 +243,7 @@ def get_pwd(prompt, default=None):
 
 
 def match_pwd(prompt, target, max_attempts=-1):
+    target = str(target)
     attempts = 0
     pwd = None
     while pwd != target and attempts != max_attempts:
@@ -204,7 +252,10 @@ def match_pwd(prompt, target, max_attempts=-1):
     return pwd == target
 
 
-def get_regex(prompt, r, flags, default=None):
+def get_regex(prompt, r, flags, default=None, allow_empty=False):
+    if default is None and allow_empty:
+        default = ''
+
     match = None
     while not match:
         inp = str(input(f"{prompt}: "))
@@ -218,6 +269,13 @@ def wait_for_key_press(key, prompt="press \'{}\' to continue..."):
     prompt = prompt.format(key)
     inp = None
     while inp != key:
+        inp = str(input(f"{prompt}: "))
+
+
+def wait_for_some_key_press(keys, prompt="press \'{}\' to continue..."):
+    prompt = prompt.format(keys)
+    inp = None
+    while inp not in keys:
         inp = str(input(f"{prompt}: "))
 
 
