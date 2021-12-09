@@ -43,6 +43,7 @@ def get_values(prompt, delimeter=',', allowed_types=[str], default=None):
 
 
 def match_value(prompt, target, max_attempts=-1):
+    target = str(target)
     attempts = 0
     inp = None
     while inp != target and attempts != max_attempts:
