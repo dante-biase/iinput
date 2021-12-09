@@ -1,10 +1,9 @@
 import os
 import re
 import platform
-
 import getpass
 
-from utils import *
+import utils as __utils
 
 
 def get_yn(prompt, default=None):
@@ -14,6 +13,7 @@ def get_yn(prompt, default=None):
         if not inp and default is not None:
             inp = default
             break
+
     return True if inp == 'y' else False
 
 
@@ -23,7 +23,7 @@ def get_value(prompt, allowed_types=[str], default=None):
         if not inp and default is not None:
             return default
 
-        inp_type = interpret_type(inp)
+        inp_type = __utils.interpret_type(inp)
         if inp_type in allowed_types:
             return inp_type(inp)
 
@@ -36,8 +36,17 @@ def get_values(prompt, delimeter=',', allowed_types=[str], default=None):
             return default
 
         items = [item.strip() for item in inp.split(delimeter) if item.strip()]
-        items = auto_cast(items, allowed_types)
+        items = __utils.auto_cast(items, allowed_types)
     return items
+
+
+def match_value(prompt, target, max_attempts=-1):
+    attempts = 0
+    inp = None
+    while inp != target and attempts != max_attempts:
+        inp = str(input(f"{prompt}: "))
+        attempts += 1
+    return inp == target
 
 
 def get_bool(prompt, default=None):
@@ -91,7 +100,7 @@ def get_float(prompt, default=None):
 
 def get_char(prompt, default=None):
     inp = ''
-    while not ischar(inp):
+    while not __utils.ischar(inp):
         inp = str(input(f"{prompt}: "))
         if not inp and default is not None:
             return default
@@ -183,6 +192,15 @@ def get_pwd(prompt, default=None):
     return pwd
 
 
+def match_pwd(prompt, target, max_attempts=-1):
+    attempts = 0
+    pwd = None
+    while pwd != target and attempts != max_attempts:
+        pwd = getpass.getpass(prompt=f"{prompt}: ")
+        attempts += 1
+    return pwd == target
+
+
 def get_regex(prompt, r, flags, default=None):
     match = None
     while not match:
@@ -193,11 +211,14 @@ def get_regex(prompt, r, flags, default=None):
     return match
 
 
-def wait_for_key(key, prompt="press {} to continue..."):
-    pass
+def wait_for_key_press(key, prompt="press \'{}\' to continue..."):
+    prompt = prompt.format(key)
+    inp = None
+    while inp != key:
+        inp = str(input(f"{prompt}: "))
 
 
-def wait_for_any_key(prompt="press any key to continue..."):
+def wait_for_any_key_press(prompt="press any key to continue..."):
     if platform.system() == "Windows":
         print(prompt)
         os.system("pause")
