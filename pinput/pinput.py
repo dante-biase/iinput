@@ -3,7 +3,7 @@ import re
 import platform
 import getpass
 
-import utils as __utils
+import pinput.utils as __utils
 
 
 def yn(prompt, default=None):
