@@ -37,3 +37,8 @@ def auto_cast(items, allowed_types):
         else:
             items[i] = item_type(items[i])
     return items
+
+
+def split_ws(string, delimiter):
+    values = [v.strip() for v in string.split(delimiter) if v.strip()]
+    return values
