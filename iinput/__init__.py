@@ -1,1 +1,1 @@
-from iinput import iinput
+from iinput.iinput import iinput
