@@ -5,12 +5,12 @@ setup(
   install_requires=[
     'keyboard',
   ],
-  version = '1.0.4',
+  version = '1.0.5',
   license='MIT',
   description = '',
   author = 'Dante Biase',
   url = 'https://github.com/dante-biase/iinput',
-  download_url = 'https://github.com/dante-biase/iinput/archive/v1.0.4.tar.gz',
+  download_url = 'https://github.com/dante-biase/iinput/archive/v1.0.5.tar.gz',
   classifiers=[
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
