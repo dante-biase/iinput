@@ -6,11 +6,12 @@ from typing import Any, List, Match
 
 import keyboard
 
-import iinput.utils as __utils
+from iinput import utils
 
 
 class __iinput:
     
+
     def __init__(self):
         pass
 
@@ -36,7 +37,7 @@ class __iinput:
             inp = str(input(f"{prompt}: ")).strip()
             if not inp and default is not None:
                 return default
-            inp, = __utils.auto_cast([inp], allowed_types=allowed_types)
+            inp, = utils.auto_cast([inp], allowed_types=allowed_types)
         return inp
 
 
@@ -47,8 +48,8 @@ class __iinput:
             inp = str(input(f"{prompt}: ")).strip()
             if not inp and default is not None:
                 return default
-            items = __utils.split_ws(inp, delimiter)
-            items = __utils.auto_cast(items, allowed_types)
+            items = utils.split_ws(inp, delimiter)
+            items = utils.auto_cast(items, allowed_types)
         return items
 
 
@@ -70,7 +71,7 @@ class __iinput:
         inps = []
         while sorted(inps) != sorted(targets) and attempts != max_attempts:
             inp = str(input(f"{prompt}: "))
-            inps = __utils.split_ws(inp, delimiter)
+            inps = utils.split_ws(inp, delimiter)
             attempts += 1
         return attempts != max_attempts
 
@@ -90,7 +91,7 @@ class __iinput:
     @staticmethod
     def number(prompt: str, default: Any = None) -> int or float:
         inp = ''
-        while not (__utils.isint(inp) or __utils.isfloat(inp)):
+        while not (utils.isint(inp) or utils.isfloat(inp)):
             inp = str(input(f"{prompt}: ")).strip()
             if not inp and default is not None:
                 return default
@@ -100,7 +101,7 @@ class __iinput:
     @staticmethod
     def integer(prompt: str, default: Any = None) -> int:
         inp = ''
-        while not __utils.isint(inp):
+        while not utils.isint(inp):
             inp = str(input(f"{prompt}: ")).strip()
             if not inp and default is not None:
                 return default
@@ -110,7 +111,7 @@ class __iinput:
     @staticmethod
     def floating_point(prompt: str, default: Any = None) -> float:
         inp = ''
-        while not __utils.isfloat(inp):
+        while not utils.isfloat(inp):
             inp = str(input(f"{prompt}: ")).strip()
             if not inp and default is not None:
                 return default
@@ -120,7 +121,7 @@ class __iinput:
     @staticmethod
     def character(prompt: str, default: Any = None) -> str:
         inp = ''
-        while not __utils.ischar(inp):
+        while not utils.ischar(inp):
             inp = str(input(f"{prompt}: "))
             if not inp and default is not None:
                 return default
@@ -169,15 +170,12 @@ class __iinput:
 
     @staticmethod
     def lines(prompt: str) -> List[str]:
+        import sys
         print(f"{prompt}: ")
-        lines = []
-        while True:
-            try:
-                l = input()
-                l = str(l)
-                lines.append(l)
-            except EOFError:
-                return lines
+        lines = sys.stdin.readlines()
+        lines = [l.rstrip('\n') for l in lines]
+        return lines
+
 
     @staticmethod
     def selection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", default: Any = None) -> str:
@@ -211,7 +209,7 @@ class __iinput:
         selected_keys = []
         while not selected_keys or any(s not in menu_options.keys() for s in selected_keys):
             inp = str(input(f"{prompt}> "))
-            selected_keys = __utils.split_ws(inp, delimiter)
+            selected_keys = utils.split_ws(inp, delimiter)
             if not selected_keys and default is not None:
                 return {k: menu_options.get(k, None) for k in default} 
         return {k: menu_options[k] for k in selected_keys} 
@@ -261,7 +259,7 @@ class __iinput:
 
     @staticmethod
     def wait_for_key_press(key: str, prompt: str = "press '{}' to continue...") -> None:
-        if not __utils.ischar(key):
+        if not utils.ischar(key):
             raise ValueError(f"{key} is not a valid key")
 
         prompt = prompt.format(key)
@@ -271,7 +269,7 @@ class __iinput:
 
     @staticmethod
     def wait_for_some_key_press(keys: List[str], prompt: str = "press {} to continue...") -> None:
-        if any(not __utils.ischar(k) for k in keys):
+        if any(not utils.ischar(k) for k in keys):
             raise ValueError(f"{keys} are not valid")
 
         prompt = prompt.format(keys)
