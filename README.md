@@ -27,7 +27,7 @@ iinput is a simple, extended version of Python's standard input that provides nu
 ```bash
 $ pip3 install iinput
 ```
-| DESCRIPTION                                       | FUNCTION                                                                                                                             | RETURN TYPE  |
+| DESCRIPTION                                       | FUNCTION                                                                                                                             | RETURN  |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------|
 | get yes or no input                               | yn(prompt: str, default: Any = None)                                                                                                 | str          |
 | get single value of specified type                | value(prompt: str, allowed_types: List[type] = [str], default: str = '')                                                             | Any          |
