@@ -2,12 +2,15 @@ from distutils.core import setup
 setup(
   name = 'iinput',
   packages = ['iinput'],
-  version = '1.0.2',
+  install_requires=[
+    'keyboard',
+  ],
+  version = '1.0.3',
   license='MIT',
   description = '',
   author = 'Dante Biase',
   url = 'https://github.com/dante-biase/iinput',
-  download_url = 'https://github.com/dante-biase/iinput/archive/v1.0.2.tar.gz',
+  download_url = 'https://github.com/dante-biase/iinput/archive/v1.0.3.tar.gz',
   classifiers=[
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
