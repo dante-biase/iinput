@@ -1,13 +1,13 @@
 from distutils.core import setup
 setup(
-  name = 'pinput',
-  packages = ['pinput'],
-  version = '1.0.1',
+  name = 'iinput',
+  packages = ['iinput'],
+  version = '1.0.2',
   license='MIT',
   description = '',
   author = 'Dante Biase',
-  url = 'https://github.com/dante-biase/pinput',
-  download_url = 'https://github.com/dante-biase/pinput/archive/v1.0.1.tar.gz',
+  url = 'https://github.com/dante-biase/iinput',
+  download_url = 'https://github.com/dante-biase/iinput/archive/v1.0.2.tar.gz',
   classifiers=[
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
