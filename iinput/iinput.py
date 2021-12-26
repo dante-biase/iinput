@@ -1,4 +1,5 @@
 import os
+import sys
 import re
 import platform
 import getpass
@@ -170,7 +171,6 @@ class __iinput:
 
     @staticmethod
     def lines(prompt: str) -> List[str]:
-        import sys
         print(f"{prompt}: ")
         lines = sys.stdin.readlines()
         lines = [l.rstrip('\n') for l in lines]
