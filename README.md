@@ -27,6 +27,13 @@ iinput is a simple, extended version of Python's standard input that provides nu
 ```bash
 $ pip3 install iinput
 ```
+
+# quickstart
+
+```python
+from iinput import iinput
+```
+
 | DESCRIPTION                                       | FUNCTION                                                                                                                             | RETURN  |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------|
 | equivalent to standard input                               | _(prompt: str = '')                                                                                                 | Any          |
