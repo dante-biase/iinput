@@ -28,14 +28,13 @@ iinput is a simple, extended version of Python's standard input that provides nu
 $ pip3 install iinput
 ```
 
-# quickstart
+
+# API
 
 ```python
 from iinput import iinput
 ```
 
-
-# API
 | DESCRIPTION                                       | FUNCTION                                                                                                                             | RETURN  |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------|
 | equivalent to standard input                               | _(prompt: str = '')                                                                                                 | Any          |
