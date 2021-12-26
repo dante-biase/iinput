@@ -2,7 +2,7 @@ import os
 import re
 import platform
 import getpass
-from typing import Any, List
+from typing import Any, List, Match
 
 import keyboard
 
@@ -220,7 +220,7 @@ def match_password(prompt: str, target: str, max_attempts: int = -1) -> bool:
     return attempts != max_attempts
 
 
-def regex(prompt: str, r: str, flags: int = 0, default: Any = None) -> str:
+def regex(prompt: str, r: str, flags: int = 0, default: Any = None) -> Match[str]:
     match = None
     while not match:
         inp = str(input(f"{prompt}: "))
