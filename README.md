@@ -56,8 +56,8 @@ from iinput import iinput
 | print menu, get selected option and its value     | selection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", default: Any = None)                            | str          |
 | print menu, get selected options and their values | multiselection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", delimiter: str = ',', default: Any = None) | List[str]    |
 | get email input                                   | email(prompt: str, default: str = '')                                                                                                | str          |
-| get password input (discrete)                     | password (prompt: str, default: str = '')                                                                                            | str          |
-| wait for input to match target (discrete)         | match_password(prompt: str, target: str, max_attempts: int = -1)                                                                     | bool         |
+| get password input (hidden)                     | password (prompt: str, default: str = '')                                                                                            | str          |
+| wait for input to match target (hidden)         | match_password(prompt: str, target: str, max_attempts: int = -1)                                                                     | bool         |
 | get pattern matched input                         | regex(prompt: str, r: str, flags: int = 0, default: Any = None)                                                                      | Match[str]   |
 | wait for a specific key press event               | wait_for_key_press(key: str, prompt: str = "press '{}' to continue...")                                                              | None         |
 | wait for any select key press event               | wait_for_some_key_press (keys: List[str], prompt: str = "press {} to continue...")                                                   | None         |
