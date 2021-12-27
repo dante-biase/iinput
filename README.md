@@ -53,8 +53,8 @@ from iinput import iinput
 | get alphanumeric input                            | alphanumeric(prompt: str, default: Any = None)                                                                                       | str          |
 | get entire line input (no strip)                  | line(prompt: str, default: str = '')                                                                                                 | str          |
 | get line inputs until empty (no strip)            | lines (prompt: str)                                                                                                                  | List[str]    |
-| print menu, get selected option and its value     | selection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", default: Any = None)                            | str          |
-| print menu, get selected options and their values | multiselection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", delimiter: str = ',', default: Any = None) | List[str]    |
+| print menu, get selected option and its value     | selection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", default: Any = None)                            | Tuple[str, Any]          |
+| print menu, get selected options and their values | multiselection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", delimiter: str = ',', default: Any = None) | Dict[str, Any]    |
 | get email input                                   | email(prompt: str, default: str = '')                                                                                                | str          |
 | get password input (hidden)                     | password (prompt: str, default: str = '')                                                                                            | str          |
 | wait for input to match target (hidden)         | match_password(prompt: str, target: str, max_attempts: int = -1)                                                                     | bool         |
