@@ -3,7 +3,7 @@ import sys
 import re
 import platform
 import getpass
-from typing import Any, List, Match
+from typing import Any, Dict, List, Tuple, Match
 
 import keyboard
 
@@ -178,7 +178,7 @@ class __iinput:
 
 
     @staticmethod
-    def selection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", default: Any = None) -> str:
+    def selection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", default: Any = None) -> Tuple[str, Any]:
         if header:
             print(header)
         for key, value in menu_options.items():
@@ -198,7 +198,7 @@ class __iinput:
 
 
     @staticmethod
-    def multiselection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", delimiter: str = ',', default: Any = None) -> List[str]:
+    def multiselection(menu_options: dict, header: str = "menu", prompt: str = "enter selection", delimiter: str = ',', default: Any = None) -> Dict[str, Any]:
         if header:
             print(header)
         for key, value in menu_options.items():
