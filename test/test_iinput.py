@@ -260,7 +260,12 @@ class IinputTest(unittest.TestCase):
 
 
     def test_lines(self):
-        pass
+        test_data = [
+            (['a\n', ' b \n', 'c\n', '\n'], ['a', ' b ', 'c', '']),
+        ]
+        for user_input, expected_return in test_data:
+            with patch('sys.stdin.readlines', return_value=user_input):
+                self.assertEqual(iinput.lines(prompt=''), expected_return)
 
 
     def test_selection(self):
