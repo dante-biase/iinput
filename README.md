@@ -37,7 +37,7 @@ from iinput import iinput
 
 | DESCRIPTION                                       | FUNCTION                                                                                                                             | RETURN  |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------|
-| equivalent to standard input                               | _(prompt: str = '')                                                                                                 | Any          |
+| equivalent to standard input                               | __call__(prompt: str = '')                                                                                                 | Any          |
 | get yes or no input                               | yn(prompt: str, default: Any = None)                                                                                                 | str          |
 | get single value of specified type                | value(prompt: str, allowed_types: List[type] = [str], default: str = '')                                                             | Any          |
 | get multiple values of specified type(s)          | values(prompt: str, delimiter: str = ',', allowed_types: List[type] = [str], default: list = [])                                     | list         |
